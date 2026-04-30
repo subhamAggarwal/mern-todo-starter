@@ -7,9 +7,11 @@ let mongod;
 let app;
 
 beforeAll(async () => {
-    // 30s startTimeout to tolerate cold-start latency on first mongod
-    // boot inside a fresh IDE container (default is 10s and can flake).
-    mongod = await MongoMemoryServer.create({ instance: { startTimeout: 30000 } });
+    // 30s launchTimeout to tolerate cold-start latency on first mongod
+    // boot inside a fresh IDE container (default is 10s and can flake on
+    // first download/spawn). The option key is `launchTimeout`, not
+    // `startTimeout` — see mongodb-memory-server v9 source.
+    mongod = await MongoMemoryServer.create({ instance: { launchTimeout: 30000 } });
     await mongoose.connect(mongod.getUri());
     app = createApp();
 });

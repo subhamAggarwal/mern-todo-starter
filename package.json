@@ -7,8 +7,8 @@
     "scripts": {
         "start": "concurrently -n server,client -c blue,green \"npm:start:server\" \"npm:start:client\"",
         "start:server": "node server/src/index.js",
-        "start:client": "vite --root client --host 0.0.0.0 --port 5173",
-        "build:client": "vite build --root client",
+        "start:client": "vite client --host 0.0.0.0 --port 5173",
+        "build:client": "vite build client",
         "test": "jest",
         "test:watch": "jest --watch",
         "prefetch:mongo": "node -e \"require('mongodb-memory-server').MongoMemoryServer.create().then(s=>s.stop()).then(()=>console.log('mongo binary cached'))\""

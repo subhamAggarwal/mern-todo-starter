@@ -10,7 +10,7 @@ async function connect(uri) {
     // boot an in-process mongodb-memory-server so the app is self-contained.
     let mongoUri = uri || process.env.MONGO_URI;
     if (!mongoUri) {
-        mongod = await MongoMemoryServer.create();
+        mongod = await MongoMemoryServer.create({ instance: { launchTimeout: 30000 } });
         mongoUri = mongod.getUri();
     }
     await mongoose.connect(mongoUri);
