@@ -71,56 +71,23 @@ export default function App() {
         e.preventDefault();
         const trimmed = title.trim();
         if (!trimmed) return;
-        try {
-            const res = await fetch(API('/api/todos'), {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ title: trimmed }),
-            });
-            if (!res.ok) {
-                const err = await res.json();
-                throw new Error(err.error || 'Failed to create todo');
-            }
-            setTitle('');
-            localStorage.removeItem(STORAGE_KEY);
-            reload();
-        } catch (e) {
-            showToast(`Failed to add todo: ${e.message}`);
-        }
+        // TODO: POST new todo to API, then reload list
+        console.log('TODO: create todo', trimmed);
     };
 
     const toggle = async (todo) => {
-        try {
-            const res = await fetch(API(`/api/todos/${todo.id}/toggle`), {
-                method: 'PATCH',
-            });
-            if (!res.ok) throw new Error('Failed to toggle todo');
-            const json = await res.json();
-            setTodos(todos.map((t) => (t.id === todo.id ? json.todo : t)));
-        } catch (e) {
-            showToast(`Failed to toggle: ${e.message}`);
-            reload();
-        }
+        // TODO: PATCH toggle to API, then update local state
+        console.log('TODO: toggle todo', todo.id);
     };
 
     const remove = async (id) => {
-        try {
-            const res = await fetch(API(`/api/todos/${id}`), { method: 'DELETE' });
-            if (!res.ok) throw new Error('Failed to delete todo');
-            reload();
-        } catch (e) {
-            showToast(`Failed to delete: ${e.message}`);
-        }
+        // TODO: DELETE todo from API, then reload list
+        console.log('TODO: remove todo', id);
     };
 
     const clearCompleted = async () => {
-        try {
-            const res = await fetch(API('/api/todos?status=completed'), { method: 'DELETE' });
-            if (!res.ok) throw new Error('Failed to clear completed');
-            reload();
-        } catch (e) {
-            showToast(`Failed to clear completed: ${e.message}`);
-        }
+        // TODO: DELETE completed todos from API, then reload list
+        console.log('TODO: clear completed');
     };
 
     const startEdit = (todo) => {
@@ -136,19 +103,10 @@ export default function App() {
     const saveEdit = async (id) => {
         const trimmed = editTitle.trim();
         if (!trimmed) return;
-        try {
-            const res = await fetch(API(`/api/todos/${id}`), {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ title: trimmed }),
-            });
-            if (!res.ok) throw new Error('Failed to update todo');
-            setEditingId(null);
-            setEditTitle('');
-            reload();
-        } catch (e) {
-            showToast(`Failed to update: ${e.message}`);
-        }
+        // TODO: PUT update to API, then reload list
+        console.log('TODO: save edit', id, trimmed);
+        setEditingId(null);
+        setEditTitle('');
     };
 
     const handleKeyDown = (e, todo) => {
@@ -166,7 +124,7 @@ export default function App() {
     const handleAddKeyDown = (e) => {
         if (e.key === 'Enter') {
             e.preventDefault();
-            create(e);
+            // TODO: trigger create on Enter
         }
     };
 
