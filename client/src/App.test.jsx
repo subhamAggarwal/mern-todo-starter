@@ -90,7 +90,7 @@ describe('Todo App (visible) – Adding todos', () => {
         await user.type(input, 'Buy groceries');
         await user.click(button);
 
-        expect(input).toHaveValue('');
+        await waitFor(() => expect(input).toHaveValue(''));
         expect(await screen.findByText('Buy groceries')).toBeInTheDocument();
     });
 
@@ -105,7 +105,7 @@ describe('Todo App (visible) – Adding todos', () => {
         const input = screen.getByPlaceholderText('What needs to be done?');
         await user.type(input, 'New task{Enter}');
 
-        expect(input).toHaveValue('');
+        await waitFor(() => expect(input).toHaveValue(''));
     });
 });
 

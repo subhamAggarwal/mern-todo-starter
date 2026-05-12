@@ -72,6 +72,7 @@ export default function App() {
         const trimmed = title.trim();
         if (!trimmed) return;
         // TODO: POST new todo to API, then reload list
+        // Use showToast(`Failed to add todo: ${e.message}`) on errors
         console.log('TODO: create todo', trimmed);
     };
 
