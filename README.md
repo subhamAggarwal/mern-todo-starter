@@ -6,7 +6,6 @@ This is the starter you build on for the assessment.
 ## Quick start
 
 ```bash
-npm install
 npm start
 ```
 
