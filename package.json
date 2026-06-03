@@ -64,8 +64,14 @@
                 "transformIgnorePatterns": [
                     "node_modules/(?!(rettime|msw|@mswjs|@open-draft|is-node-process|outvariant|strict-event-emitter|headers-polyfill|@bundled-es-modules|until-async)/)"
                 ],
+                "testEnvironmentOptions": {
+                    "customExportConditions": [""]
+                },
                 "moduleNameMapper": {
                     "^msw/node$": "<rootDir>/node_modules/msw/lib/node/index.js",
+                    "^@mswjs/interceptors/ClientRequest$": "<rootDir>/node_modules/@mswjs/interceptors/lib/node/interceptors/ClientRequest/index.cjs",
+                    "^@mswjs/interceptors/WebSocket$": "<rootDir>/node_modules/@mswjs/interceptors/lib/browser/interceptors/WebSocket/index.cjs",
+                    "^@mswjs/interceptors/RemoteHttpInterceptor$": "<rootDir>/node_modules/@mswjs/interceptors/lib/node/RemoteHttpInterceptor.cjs",
                     "\\.(css|less|scss|sass)$": "identity-obj-proxy"
                 }
             }
