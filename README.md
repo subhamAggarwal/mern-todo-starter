@@ -132,3 +132,5 @@ See `dummy-project-hidden/SELECTOR_CONTRACT.md` (provided after submission) for 
 - The React client expects the API at `/api/*`; Vite proxies that to port
   3000 (see `client/vite.config.js`).
 - Environment: `PORT` (default 3000), optional `MONGO_URI`.
+
+Best of Luck!
