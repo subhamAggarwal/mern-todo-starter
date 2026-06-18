@@ -134,3 +134,31 @@ See `dummy-project-hidden/SELECTOR_CONTRACT.md` (provided after submission) for 
 - Environment: `PORT` (default 3000), optional `MONGO_URI`.
 
 Best of Luck!
+
+## Development Guide
+
+### How to Run Locally
+
+> **⚠️ CRITICAL: Port Binding**
+> To be evaluated, your servers MUST bind to `0.0.0.0` (all interfaces) rather than `localhost` or `127.0.0.1`.
+
+This is a full-stack application. You must run both the backend and frontend servers simultaneously in separate terminal tabs.
+
+**1. Start the Backend Server (Port 5000)**
+```bash
+npm start
+```
+
+**2. Start the Frontend Server (Port 5173)**
+```bash
+cd client && npm run dev
+```
+
+### How to Test
+
+You can execute the visible test suite locally to verify your solution against the visible test cases:
+```bash
+npm test
+```
+
+When you click **Submit**, the platform will run an identical evaluation suite against your code using the same command.
